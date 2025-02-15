@@ -34,7 +34,7 @@ The **builder** appears if you order a custom pizza. In this case, the waiter te
 
 A **builder** is useful when you need to perform many steps to build an object. It is particularly helpful when the creation of a new object requires setting many parameters, and some (or all) of them are optional.
 
-In such situations, the class constructor can become complex, and having optional arguments makes it difficult to validate the resultant object's state. This can lead to the instantiation of an object with a combination of parameters that results in an invalid state.
+In such situations, the class constructor can become confusing, and having optional arguments makes it difficult to validate the resultant object's state. This can lead to the instantiation of an object with a combination of parameters that results in an invalid state.
 
 Using a builder allows you to receive each initialization parameter step by step and then return the fully constructed object at once. The main disadvantage of this solution is that you will need a concrete builder implementation for each combination of parameters, but this ensures consistent object representation.
 
