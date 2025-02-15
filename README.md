@@ -25,9 +25,9 @@ To run the code examples in this repository, follow these steps:
 
 ## Creational Patterns
 
-|  #  | Name    | Description                                               | Documentation                                                                                          |
-| :-: | ------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| 01  | Builder | Construction of complex or multi-representational objects | [Builder](https://github.com/matiasgimenezdev/design-patterns-explained/tree/main/builder/builder)<br> |
+|  #  | Name    | Description                                               | Documentation                                                                              |
+| :-: | ------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| 01  | Builder | Construction of complex or multi-representational objects | [Builder](https://github.com/matiagimenez/design-patterns-explained/tree/main/builder)<br> |
 
 ## Structural Patterns
 
