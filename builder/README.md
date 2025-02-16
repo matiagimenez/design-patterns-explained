@@ -218,6 +218,13 @@ if __name__ == "__main__":
 
 ```
 
+## Benefits and Trade-offs
+- ✅ More control over the construction process compared to other creational patterns.
+- ✅ Supports constructing objects step-by-step.
+- ✅ Can construct objects that require a complex assembly of sub-objects.
+- ✅ Single Responsibility Principle. You can isolate complex construction code from the business logic of the product.
+- ❌ The overall complexity of the code can increase since the pattern requires creating multiple new classes.
+
 ## References
 
 -   📚 [Design Patterns in Python: Builder](https://medium.com/@amirm.lavasani/design-patterns-in-python-builder-0732552324b1)
