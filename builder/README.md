@@ -1,14 +1,16 @@
 # Builder
 
-The **builder** pattern separates the construction of a complex object from its representation, allowing to use the same construction process to create objects with different representations.
+The **builder** pattern separates the construction of a complex object from its representation so that the same construction process can create different representations of the object.
 
 It provides an elegant solution to the problem of creating complex objects with multiple components.
+
+![image](https://github.com/user-attachments/assets/3906e7a5-642d-444e-ad13-69bd4633ea44)
 
 ## Introduction
 
 Imagine you have a class that includes in its behaviour the creation of a complex object, with various configurations.
 
-### How this class can be _simplified_?
+#### How this class can be _simplified_?
 
 The **builder** pattern solves this problem by abstracting the construction process into separate classes, resulting in cleaner and more maintainable code. In other words, applying the pattern means following the _separation of concerns_ principle, separating the construction process from the products internal structure.
 
@@ -16,11 +18,11 @@ Without the **builder** pattern, you might end up with a constructor that takes 
 
 Implementating the **builder** pattern, keeps encapsulated the code for construction, allowing you to vary a product's internal representation.
 
-The main drawback of the **builder** pattern is that requires creating a separate concrete builder for each different type of Product.
+The main drawback of the **builder** pattern is that requires creating a concrete builder for each unique configuration of the "product".
 
 ## How to recognize a builder pattern implementation?
 
-The **builder** pattern can be recognized in a class, which has a _single creation method_ and _several methods to configure_ the resulting object. Builder methods often support chaining.
+The **builder** pattern can be recognized in a class, which has a _single creation method_ and _several methods to configure_ the resulting object. **Builder class methods often support chaining**.
 
 The **builder** and factory patterns are very similar in the fact they both instantiate new objects at runtime. The difference is when the process of creating the object is more complex, so rather that the factory returning a new instance of object, it calls the builders director constructor method that goes through a more complex construction process involving several steps. In the end, both return an object instance.
 
@@ -32,11 +34,13 @@ The **builder** appears if you order a custom pizza. In this case, the waiter te
 
 ## How to know if you can apply the pattern in your project?
 
-A **builder** is useful when you need to perform many steps to build an object. It is particularly helpful when the creation of a new object requires setting many parameters, and some (or all) of them are optional.
+A **builder** is useful when constructing an object requires multiple steps, especially when many parameters are involved, some of which may be optional.
 
-In such situations, the class constructor can become confusing, and having optional arguments makes it difficult to validate the resultant object's state. This can lead to the instantiation of an object with a combination of parameters that results in an invalid state.
+In such cases, using a class constructor can become confusing, as handling numerous optional arguments makes it harder to validate the object's state. This increases the risk of creating an instance with an invalid combination of parameters.
 
-Using a builder allows you to receive each initialization parameter step by step and then return the fully constructed object at once. The main disadvantage of this solution is that you will need a concrete builder implementation for each combination of parameters, but this ensures consistent object representation.
+The builder pattern addresses this by allowing parameters to be set step by step before returning a fully constructed object. While this approach requires a *concrete builder* implementation for each parameter combination, it ensures a consistent and valid object representation.
+
+Another advantage of builders is handling complex object initialization, where method calls must follow a specific sequence and intermediate objects need to be generated. Attempting to manage this within a constructor can be a real pain, and relying on a separate initialization method that one must remember to call is error-prone. Delegating construction to a **builder** simplifies this process by ensuring the object transitions through the necessary states in a controlled manner.
 
 ## Key components
 
@@ -195,7 +199,8 @@ if __name__ == "__main__":
     """
 
     builder = ConcreteBuilder()
-    director = Director(builder)
+    director = Director()
+    director.builder = builder
 
     print("Standard basic product: ")
     director.build_minimal_viable_product()
