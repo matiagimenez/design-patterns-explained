@@ -36,10 +36,10 @@ class Car:
 
 
 class CarBuilder(ABC):
-    _car: Car
+    car: Car
 
     def build(self) -> Car:
-        return self._car
+        return self.car
 
     @abstractmethod
     def with_gps(self) -> Self:
@@ -52,30 +52,30 @@ class CarBuilder(ABC):
 
 class TaxiBuilder(CarBuilder):
     def __init__(self) -> None:
-        self._car = Car(engine=Engine.GAS, chassis=Chassis.TAXI, wheels=4)
+        self.car = Car(engine=Engine.GAS, chassis=Chassis.TAXI, wheels=4)
 
     def with_gps(self) -> Self:
-        self._car.gps = True
+        self.car.gps = True
         return self
 
     def with_color(self, color: Color) -> Self:
-        self._car.color = color
+        self.car.color = color
         return self
 
 
 class SportsCarBuilder(CarBuilder):
     def __init__(self) -> None:
-        self._car = Car(engine=Engine.DIESEL, chassis=Chassis.SPORTS_CAR, wheels=4)
+        self.car = Car(engine=Engine.DIESEL, chassis=Chassis.SPORTS_CAR, wheels=4)
 
     def build(self) -> Car:
-        return self._car
+        return self.car
 
     def with_gps(self) -> Self:
-        self._car.gps = True
+        self.car.gps = True
         return self
 
     def with_color(self, color: Color) -> Self:
-        self._car.color = color
+        self.car.color = color
         return self
 
 
