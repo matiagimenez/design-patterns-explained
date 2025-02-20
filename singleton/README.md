@@ -2,6 +2,8 @@
 
 The **Singleton** pattern ensures that only one object of its kind exists and provides a single point of access to it for any other code. For achieving this, you have to restrict the instantiation of a class.
 
+![singleton](https://github.com/user-attachments/assets/fe89cab8-db18-4276-b10a-c8bbe9db0c7a)
+
 ## Introduction
 
 #### Why would anyone want to control how many instances a class has?
