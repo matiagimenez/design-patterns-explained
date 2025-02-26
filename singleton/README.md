@@ -8,13 +8,11 @@ The **Singleton** pattern ensures that only one object of its kind exists and pr
 
 #### Why would anyone want to control how many instances a class has?
 
-The most common reason for this is to control access to some shared resource—for example, a database or a file.
+The most common reason for this is to control access to some shared resource — for example, a database or a file.
 
 Just like a global variable, the **Singleton** pattern lets you access some object from anywhere in the program. However, it also protects that instance from being overwritten by other code.
 
-## How to recognize a builder pattern implementation?
-
-Create a static creation method that acts as a constructor.
+## How to recognize a singleton pattern implementation?
 The **Singleton** pattern can be implemented following different approaches, but all of them have the following common concepts.
 
 -   _Private constructor_ to restrict instantiation of the class from other classes.
