@@ -1,4 +1,23 @@
 from abc import ABC, abstractmethod
+from dataclasses import dataclass, field
+
+
+@dataclass
+class Product:
+    """
+    It makes sense to use the Builder pattern only when your products are quite
+    complex and require extensive configuration.
+
+    Unlike in other creational patterns, different concrete builders can produce
+    unrelated products. In other words, results of various builders may not
+    always follow the same interface.
+    """
+
+    parts: list[str] = field(default_factory=list)
+
+    def add(self, part: str) -> None:
+        self.parts.append(part)
+
 
 class Builder(ABC):
     """
@@ -8,7 +27,7 @@ class Builder(ABC):
 
     @property
     @abstractmethod
-    def product(self) -> None:
+    def product(self) -> Product:
         pass
 
     @abstractmethod
@@ -30,7 +49,8 @@ class ConcreteBuilder(Builder):
     specific implementations of the building steps. Your program may have
     several variations of Builders, implemented differently.
     """
-    product: Product
+
+    _product: Product
 
     def __init__(self) -> None:
         """
@@ -38,7 +58,6 @@ class ConcreteBuilder(Builder):
         used in further assembly.
         """
         self.reset()
-
 
     def reset(self) -> None:
         """
@@ -75,50 +94,22 @@ class ConcreteBuilder(Builder):
         self._product.add("Part C1")
 
 
-class Product():
-    """
-    It makes sense to use the Builder pattern only when your products are quite
-    complex and require extensive configuration.
-
-    Unlike in other creational patterns, different concrete builders can produce
-    unrelated products. In other words, results of various builders may not
-    always follow the same interface.
-    """
-    parts: list[str]
-
-    def __init__(self) -> None:
-        self.parts = []
-
-    def add(self, part: str) -> None:
-        self.parts.append(part)
-
+@dataclass
 class Director:
     """
     The Director is only responsible for executing the building steps in a
     particular sequence. It is helpful when producing products according to a
     specific order or configuration. Strictly speaking, the Director class is
     optional, since the client can control builders directly.
-    """
-
-    def __init__(self) -> None:
-        self._builder = None
-
-    @property
-    def builder(self) -> Builder:
-        return self._builder
-
-    @builder.setter
-    def builder(self, builder: Builder) -> None:
-        """
-        The Director works with any builder instance that the client code passes
-        to it. This way, the client code may alter the final type of the newly
-        assembled product.
-        """
-        self._builder = builder
-
-    """
     The Director can construct several product variations using the same
     building steps.
+    """
+
+    builder: Builder
+    """
+    The Director works with any builder instance that the client code passes
+    to it. This way, the client code may alter the final type of the newly
+    assembled product.
     """
 
     def build_minimal_viable_product(self) -> None:
@@ -138,19 +129,18 @@ if __name__ == "__main__":
     """
 
     builder = ConcreteBuilder()
-    director = Director()
-    director.builder = builder
+    director = Director(builder)
 
     print("Standard basic product: ")
     director.build_minimal_viable_product()
-    print(f"Product: {builder.product}") # Product(parts=["Part A1"])
+    print(f"Product: {builder.product}")  # Product(parts=["Part A1"])
 
     print("Standard full featured product: ")
     director.build_full_featured_product()
-    print(f"Product: {builder.product}") # Product(parts=["Part A1", "Part B1", "Part C1"])
+    print(builder.product)  # Product(parts=["Part A1", "Part B1", "Part C1"])
 
     # Remember, the Builder pattern can be used without a Director class.
     print("Custom product: ")
     builder.produce_part_a()
     builder.produce_part_b()
-    print(f"Product: {builder.product}") # Product(parts=["Part A1", "Part B1"])
+    print(builder.product)  # Product(parts=["Part A1", "Part B1"])
