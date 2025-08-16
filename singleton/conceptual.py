@@ -6,7 +6,7 @@ from typing import Self
 class Singleton:
     _instance: Self | None = field(default=None)
 
-    def __init__(self):
+    def __init__(self) -> None:
         if not self._instance:
             exception = "Use get_instance() to access the Singleton instance"
             raise RuntimeError(exception)
@@ -15,7 +15,7 @@ class Singleton:
     def get_instance(cls) -> Self:
         if cls._instance is None:
             cls._instance = cls()
-        return cls._instance
+        return cls._instance  # type: ignore[no-any-return]
 
 
 variable = Singleton.get_instance()
