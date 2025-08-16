@@ -8,6 +8,7 @@ Have you encountered **recurring coding challenges**? Imagine having a toolbox o
 | :-: | --------- | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | 01  | Builder   | Construction of complex or multi-representational objects | [Builder](https://github.com/matiagimenez/design-patterns-explained/tree/main/builder)<br>     |
 | 02  | Singleton | Only one existing instance of a class                     | [Singleton](https://github.com/matiagimenez/design-patterns-explained/tree/main/singleton)<br> |
+| 03  | Prototype | Create new objects by copying an existing object          | [Prototype](https://github.com/matiagimenez/design-patterns-explained/tree/main/prototype)<br> |
 
 ## Structural Patterns
 
