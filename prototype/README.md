@@ -4,6 +4,9 @@ The **Prototype** pattern primary goal is to create new objects by copying an ex
 
 At its core, the Prototype pattern relies on the concept of _cloning_. Instead of creating new objects from scratch, we create copies of existing objects. These prototypes serve as templates, allowing us to replicate their structure and attributes. When a new object is needed, we clone the prototype, saving both time and resources.
 
+<img width="640" height="400" alt="prototype" src="https://github.com/user-attachments/assets/dd555e4e-ddd3-44fc-837e-f17dc34cf7f9" />
+
+
 ## Introduction
 
 Say you have an object, and you want to create an exact copy of it. How would you do it? First, you have to create a new object of the same class. Then you have to go through all the fields of the original object and copy their values over to the new object.
